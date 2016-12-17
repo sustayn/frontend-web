@@ -1,0 +1,60 @@
+// Heading
+.grommetux-heading {
+    font-weight: 200;
+}
+h1.grommetux-heading {
+    font-size: 36px;
+}
+
+// Form Field
+.grommetux-form-field {
+    overflow: visible;
+
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+
+    border-color: $brand-color;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    background: transparent;
+    &.grommetux-form-field--error {
+        border-color: map-get($brand-status-colors, error);
+        & > label {
+            color: map-get($brand-status-colors, error);
+        }
+    }
+}
+
+.grommetux-form-field__error {
+    display: none;
+}
+
+.grommetux-form-field__contents {
+    margin-right: 0;
+    & > input[type=text], & > input[type=email] {
+        background: transparent;
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.grommetux-form-field__label {
+    color: $brand-color;
+}
+
+// Button
+.grommetux-button {
+    font-weight: normal;
+    &.cancel-button {
+        // Sensual_Grey
+        color: #898989;
+        border-color: transparent;
+        &:hover, &:active {
+            // Crying_Dove
+            background-color: #c6c5c5;
+        }
+    }
+}

@@ -1,0 +1,5 @@
+.error { color: map-get($brand-status-colors, error); }
+.brand { color: $brand-color; }
+// Sensual Grey, _should_ eventually become grommet grey-1
+// once we can sync up about color
+.grey-1 { color: #898989; }

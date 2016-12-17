@@ -1,0 +1,45 @@
+/* Absolute */
+.abs { position: absolute; }
+// Top
+@each $i in 6 {
+    .top-#{$i} {
+        top: #{$i}px;
+    }
+}
+.top-navbar { top: $navbar-height; }
+// Right
+@each $i in 0 {
+    .right-#{$i} {
+        right: #{$i}px;
+    }
+}
+// Bottom
+@each $i in 18 {
+    .bot-#{$i} {
+        bottom: #{$i}px;
+    }
+}
+// Left
+@each $i in 0 {
+    .left-#{$i} {
+        left: #{$i}px;
+    }
+}
+
+// Center vertically and horizontally
+.center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.center-y {
+    top: 50%;
+    transform: translateY(-50%);
+}
+.center-x {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Relative */
+.rel { position: relative; }

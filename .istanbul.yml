@@ -1,0 +1,4 @@
+instrumentation:
+  root: app
+  excludes: ['**/libs/**']
+  include-all-sources: true

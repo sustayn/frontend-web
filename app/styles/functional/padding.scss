@@ -1,0 +1,23 @@
+/* Left/Right */
+@each $i in 12, 40, 60 {
+    .px#{$i} {
+        padding-left: #{$i}px;
+        padding-right: #{$i}px;
+    }
+}
+
+/* Top/Bottom */
+@each $i in 55 {
+    .py#{$i} {
+        padding-top: #{$i}px;
+        padding-bottom: #{$i}px;
+    }
+}
+
+/* Top */
+
+/* Right */
+
+/* Bottom */
+
+/* Left */

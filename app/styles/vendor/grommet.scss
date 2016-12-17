@@ -1,0 +1,88 @@
+@import "../../../node_modules/grommet/scss/vanilla/vanilla.defaults";
+@import "./inuit-variables";
+
+// Settings
+@import "../../../node_modules/grommet/scss/grommet-core/settings.defaults";
+@import "../../../node_modules/grommet/scss/grommet-core/settings.color";
+@import "../../../node_modules/grommet/scss/grommet-core/settings.font";
+
+// Tools
+@import "../../../node_modules/grommet/scss/grommet-core/tools.color-index";
+@import "../../../node_modules/grommet/scss/grommet-core/tools.icon";
+@import "../../../node_modules/grommet/scss/grommet-core/tools.input";
+@import "../../../node_modules/grommet/scss/grommet-core/tools.margin";
+@import "../../../node_modules/grommet/scss/grommet-core/tools.pad";
+@import "../../../node_modules/grommet/scss/grommet-core/tools.page";
+@import "../../../node_modules/grommet/scss/grommet-core/tools.text";
+@import "../../../node_modules/grommet/scss/grommet-core/tools.text-align";
+
+
+// Base
+@import "../../../node_modules/grommet/scss/grommet-core/base.font";
+@import "../../../node_modules/grommet/scss/grommet-core/base.text";
+@import "../../../node_modules/grommet/scss/grommet-core/base.animation";
+@import "../../../node_modules/grommet/scss/grommet-core/base.input";
+@import "../../../node_modules/grommet/scss/grommet-core/base.page";
+
+//Objects
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.accordion-panel";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.anchor";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.app";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.article";
+@import "../../../node_modules/grommet/scss/grommet-core/objects.box";
+@import "../../../node_modules/grommet/scss/grommet-core/objects.button";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.card";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.carousel";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.chart";
+@import "../../../node_modules/grommet/scss/grommet-core/objects.check-box";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.collapsible";
+@import "../../../node_modules/grommet/scss/grommet-core/objects.color-index";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.columns";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.date-time";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.distribution";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.drop";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.footer";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.form";
+@import "../../../node_modules/grommet/scss/grommet-core/objects.form-field";
+@import "../../../node_modules/grommet/scss/grommet-core/objects.header";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.heading";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.headline";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.hero";
+@import "../../../node_modules/grommet/scss/grommet-core/objects.icon";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.image";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.label";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.layer";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.list";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.legend";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.map";
+@import "../../../node_modules/grommet/scss/grommet-core/objects.menu";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.meter";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.notification";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.number-input";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.object";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.paragraph";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.pulse";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.quote";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.radio-button";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.search";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.search-input";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.section";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.select";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.sidebar";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.split";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.skip-link";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.sun-burst";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.tab";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.tabs";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.table";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.tbd";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.text-input";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.tile";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.timestamp";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.tip";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.title";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.toast";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.topology";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.value";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.video";
+// @import "../../../node_modules/grommet/scss/grommet-core/objects.world-map";
