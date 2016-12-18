@@ -6,41 +6,41 @@ import { forgotPasswordReq } from 'services/authentication/actions';
 import Button from 'grommet/components/Button';
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-    return bindActionCreators({ forgotPasswordReq }, dispatch);
+  return bindActionCreators({ forgotPasswordReq }, dispatch);
 };
 
 export class ForgotPassword extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
-    submit() {
-        const { email } = this.state;
-        this.props.forgotPasswordReq(email);
-    }
+  submit() {
+    const { email } = this.state;
+    this.props.forgotPasswordReq(email);
+  }
 
-    checkKeyPress(e) {
-        if(e.key === 'Enter') this.submit();
-    }
+  checkKeyPress(e) {
+    if(e.key === 'Enter') this.submit();
+  }
 
-    render() {
-        return (
-            <div>
-                <input
-                    type='email'
-                    placeholder='email'
-                    onKeyPress={this.checkKeyPress.bind(this)}
-                    onChange={(e) => { this.setState({ email: e.target.value }); }}
-                />
-                <Button
-                    className='spec-submit-button'
-                    label='Reset Password'
-                    onClick={this.submit.bind(this)}
-                />
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <input
+          type='email'
+          placeholder='email'
+          onKeyPress={this.checkKeyPress.bind(this)}
+          onChange={(e) => { this.setState({ email: e.target.value }); }}
+        />
+        <Button
+          className='spec-submit-button'
+          label='Reset Password'
+          onClick={this.submit.bind(this)}
+        />
+      </div>
+    );
+  }
 }
 
 export default connect(() => ({}), mapDispatchToProps)(ForgotPassword);

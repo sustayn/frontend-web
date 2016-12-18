@@ -6,10 +6,10 @@ import UserSettings from './UserSettings';
 import AuthForgotPassword from './AuthForgotPassword';
 
 export default {
-    AuthRegister,
-    AuthForgotPassword,
-    AuthPasswordReset,
-    AuthSignIn,
-    AuthActivate,
-    UserSettings,
+  AuthRegister,
+  AuthForgotPassword,
+  AuthPasswordReset,
+  AuthSignIn,
+  AuthActivate,
+  UserSettings,
 };

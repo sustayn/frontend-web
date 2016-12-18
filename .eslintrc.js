@@ -160,7 +160,7 @@ module.exports = {
     "react/jsx-curly-spacing": [2, "never"],
     // Validate props indentation in JSX
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent-props.md
-    "react/jsx-indent-props": [2, 4],
+    "react/jsx-indent-props": [2, 2],
     // Prevent duplicate properties in JSX
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-duplicate-props.md
     "react/jsx-no-duplicate-props": 2,
@@ -263,7 +263,7 @@ module.exports = {
     "eol-last": 0,
     // Enforce Indentation
     // http://eslint.org/docs/rules/indent
-    "indent": [2, 4, {
+    "indent": [2, 2, {
         "SwitchCase": 1,
     }],
     // Enforce Property Spacing

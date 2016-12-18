@@ -11,16 +11,16 @@ import { reducer as authReducer } from 'services/authentication/reducer';
 import { reducer as flashReducer } from 'services/flash/reducer';
 
 const services = combineReducers({
-    auth:  authReducer,
-    flash: flashReducer,
+  auth:  authReducer,
+  flash: flashReducer,
 });
 
 export const reducer = combineReducers({
-    entities:   entitiesReducer,
-    services,
-    formErrors: formErrorsReducer,
-    routing:    routerReducer,
-    dialogs:    dialogReducer,
+  entities:   entitiesReducer,
+  services,
+  formErrors: formErrorsReducer,
+  routing:    routerReducer,
+  dialogs:    dialogReducer,
 });
 
 export default reducer;

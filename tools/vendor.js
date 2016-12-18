@@ -13,12 +13,7 @@ require('redux-dialog');
 require('reselect');
 require('rxjs');
 
-// electron deps
-require('react-three-renderer');
-require('three');
-
 // unclear deps
-require('comws'); /* used in electron dev tools, unclear though */
 require('es5-ext');
 require('debug');
 require('d');

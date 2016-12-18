@@ -98,72 +98,77 @@ To:
 */
 
 export const genericEntity = (output, key, value, input) => {
-    if(key === 'type') {
-        // Camelize the type
-        output[key] = camelCase(value);
-    } else if(key === 'attributes') {
-        Object.keys(value).forEach((attr) => {
-            // Camelize attribute keys
-            output[camelCase(attr)] = value[attr];
-        });
-        delete output.attributes;
-    } else if(key === 'relationships') {
-        Object.keys(value).forEach((relation) => {
-            // for "has many" relations
-            if(Array.isArray(value[relation].data)) {
-                output[camelCase(relation)] = value[relation].data.map((val) => val.id);
-            //  for "has one" relations
-            } else {
-                output[camelCase(relation)] = value[relation].data.id;
-            }
-        });
-        delete output.relationships;
-    }
+  if(key === 'type') {
+    // Camelize the type
+    output[key] = camelCase(value);
+  } else if(key === 'attributes') {
+    Object.keys(value).forEach((attr) => {
+      // Camelize attribute keys
+      output[camelCase(attr)] = value[attr];
+    });
+    delete output.attributes;
+  } else if(key === 'relationships') {
+    Object.keys(value).forEach((relation) => {
+      // for "has many" relations
+      if(Array.isArray(value[relation].data)) {
+        output[camelCase(relation)] = value[relation].data.map((val) => val.id);
+      //  for "has one" relations
+      } else {
+        output[camelCase(relation)] = value[relation].data.id;
+      }
+    });
+    delete output.relationships;
+  }
 };
 
 export const genericSchema = (schema) => {
-    return new Schema(schema, {
-        idAttribute:  (value) => value.id,
-        assignEntity: genericEntity,
-    });
+  return new Schema(schema, {
+    idAttribute:  (value) => value.id,
+    assignEntity: genericEntity,
+  });
 };
 
 const entityModels = reduce(entityList, (res, val) => {
-    res[val] = genericSchema(val);
-    return res;
+  res[val] = genericSchema(val);
+  return res;
 }, {});
 
 // This will need to expand should requests get more sophisticated
 export const genericPayload = (res) => {
-    if(!Array.isArray(res.response.data)) res.response.data = [res.response.data];
+  if(!Array.isArray(res.response.data)) res.response.data = [res.response.data];
 
-    const data = res.response.included ?
-        [...res.response.data, ...res.response.included] :
-        [...res.response.data];
-    const n = normalize(data, arrayOf(
-        entityModels, { schemaAttribute: (item) => {
-            return camelCase(item.type);
-        } }
-    ));
-    return n;
+  const data = res.response.included ?
+    [...res.response.data, ...res.response.included] :
+    [...res.response.data];
+  return normalize(
+    data,
+    arrayOf(
+      entityModels,
+      {
+        schemaAttribute: (item) => {
+          return camelCase(item.type);
+        }
+      }
+    )
+  );
 };
 
 Observable.prototype.mapDataToPayload = function mapDataToPayload() {
-    return Observable.create((observer) => {
-        this.subscribe({
-            next:     (data) => observer.next(genericPayload(data)),
-            error:    (err) => observer.error(err),
-            complete: () => observer.complete(),
-        });
+  return Observable.create((observer) => {
+    this.subscribe({
+      next:     (data) => observer.next(genericPayload(data)),
+      error:    (err) => observer.error(err),
+      complete: () => observer.complete(),
     });
+  });
 };
 
 Observable.prototype.mapDataToAction = function mapDataToAction(type) {
-    return Observable.create((observer) => {
-        this.subscribe({
-            next:     (data) => { return observer.next({ type, payload: genericPayload(data) }) },
-            error:    (err) => observer.error(err),
-            complete: () => observer.complete(),
-        });
+  return Observable.create((observer) => {
+    this.subscribe({
+      next:     (data) => { return observer.next({ type, payload: genericPayload(data) }) },
+      error:    (err) => observer.error(err),
+      complete: () => observer.complete(),
     });
+  });
 };

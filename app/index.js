@@ -8,33 +8,33 @@ import Root from 'containers/Root';
 const appEl = document.getElementById('app');
 
 ReactDOM.render(
-    <AppContainer>
-        <Root routes={routes} />
-    </AppContainer>,
-    appEl
+  <AppContainer>
+    <Root routes={routes} />
+  </AppContainer>,
+  appEl
 );
 
 console.log(process.env);
 
 // Hot Module Replacement API
 if (module.hot) {
-    module.hot.accept([
-        './containers/Root.js',
-        './routes.js',
-    ], () => {
-        console.log('module.hot.accept');
+  module.hot.accept([
+    './containers/Root.js',
+    './routes.js',
+  ], () => {
+    console.log('module.hot.accept');
 
-        const nextRoutes = require('app/routes').default;
-        const hotReloadRoutes = require('utils/hotReloadRoutes').default;
+    const nextRoutes = require('app/routes').default;
+    const hotReloadRoutes = require('utils/hotReloadRoutes').default;
 
-        hotReloadRoutes(routes, nextRoutes);
+    hotReloadRoutes(routes, nextRoutes);
 
-        ReactDOM.render(
-            <AppContainer>
-                <Root routes={routes} />
-            </AppContainer>,
-            appEl
-        );
-    });
+    ReactDOM.render(
+      <AppContainer>
+        <Root routes={routes} />
+      </AppContainer>,
+      appEl
+    );
+  });
 }
 

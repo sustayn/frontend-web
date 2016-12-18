@@ -1,11 +1,11 @@
 import makeActionCreator from 'utils/makeActionCreator.js';
 
 export const a = {
-    PUSH_TO_QUEUE:  'PUSH_TO_QUEUE',
-    POP_FROM_QUEUE: 'POP_FROM_QUEUE',
-    PUSH_ERROR:     'PUSH_ERROR',
-    PUSH_SUCCESS:   'PUSH_SUCCESS',
-    PUSH_WARNING:   'PUSH_WARNING',
+  PUSH_TO_QUEUE:  'PUSH_TO_QUEUE',
+  POP_FROM_QUEUE: 'POP_FROM_QUEUE',
+  PUSH_ERROR:     'PUSH_ERROR',
+  PUSH_SUCCESS:   'PUSH_SUCCESS',
+  PUSH_WARNING:   'PUSH_WARNING',
 };
 
 export const pushFlash = makeActionCreator(a.PUSH_TO_QUEUE, 'flashObject', 'duration');

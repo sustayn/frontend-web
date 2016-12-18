@@ -1,6 +1,6 @@
 // Prevent Mocha from compiling class
 function noop() {
-    return null;
+  return null;
 }
 
 require.extensions['.css'] = noop;

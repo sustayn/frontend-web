@@ -1,24 +1,24 @@
 .modal_modal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
 
-    transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 
-    border: 1px solid rgba(0,0,0,.4);
-    background-color: #fff;
-    box-shadow: 0 3px 7px rgba(0, 0, 0, .3);
-    &:focus {
-        outline: none;
-    }
+  border: 1px solid rgba(0,0,0,.4);
+  background-color: #fff;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, .3);
+  &:focus {
+    outline: none;
+  }
 }
 
 .modal_overlay {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 
-    background-color: rgba(0,0,0,.33);
+  background-color: rgba(0,0,0,.33);
 }

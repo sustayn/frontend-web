@@ -7,7 +7,7 @@
   "scripts": {
     "serve": "bnr serve",
     "test": "bnr test",
-    "build-dll:web": "bnr build-dll:web",
+    "build-dll": "bnr build-dll",
     "build": "webpack --config ./tools/webpack.config.js --profile --colors --env.sourcemap=source-map",
     "--": "",
     "test:unit": "bnr test:unit",
@@ -31,19 +31,11 @@
         "BABEL_ENV": "test"
       }
     },
-    "build-dll:web": {
+    "build-dll": {
       "command": "webpack --config ./tools/webpack.config.js --profile --colors --env.sourcemap=source-map",
       "env": {
         "BABEL_ENV": "web",
         "TARGET": "dll"
-      }
-    },
-    "build-web": {
-      "command": "webpack --config ./tools/webpack.config.js --profile --colors --env.sourcemap=source-map",
-      "env": {
-        "NODE_ENV": "development",
-        "BABEL_ENV": "web",
-        "TARGET": "web"
       }
     },
     "test:unit": {
@@ -74,6 +66,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "actioncable": "5.0.0",
     "classnames": "^2.2.5",
     "grommet": "1.0.1",
     "lodash": "^4.16.1",

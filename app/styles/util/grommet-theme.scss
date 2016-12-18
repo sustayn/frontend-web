@@ -4,14 +4,14 @@ Those colors are defined in node_modules/grommet/scss/grommet-core/_settings.col
 A good example of overriding those themes is in node_modules/grommet/scss/vanilla/_vanilla.defaults.scss
 
 This file should be included _before_ the grommet defaults are.
- */
+*/
 
 $brand-color: #5f6aff;
 $brand-status-colors: (
-    critical: #FF324D,
-    error: #f94912,
-    warning: #FFD602,
-    ok: #99f779,
-    unknown: #a8a8a8,
-    disabled: #a8a8a8
+  critical: #FF324D,
+  error: #f94912,
+  warning: #FFD602,
+  ok: #99f779,
+  unknown: #a8a8a8,
+  disabled: #a8a8a8
 );

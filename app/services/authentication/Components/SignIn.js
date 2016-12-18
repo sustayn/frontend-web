@@ -6,48 +6,48 @@ import { signInReq } from 'services/authentication/actions';
 import Button from 'grommet/components/Button';
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-    return bindActionCreators({ signInReq }, dispatch);
+  return bindActionCreators({ signInReq }, dispatch);
 };
 
 export class SignIn extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
-    submit() {
-        const { email, password } = this.state;
-        this.props.signInReq({ email, password });
-    }
+  submit() {
+    const { email, password } = this.state;
+    this.props.signInReq({ email, password });
+  }
 
-    checkKeyPress(e) {
-        if(e.key === 'Enter') this.submit();
-    }
+  checkKeyPress(e) {
+    if(e.key === 'Enter') this.submit();
+  }
 
-    render() {
-        return (
-            <div>
-                <input
-                    className='spec-email-field'
-                    type='email'
-                    placeholder='email'
-                    onChange={(e) => { this.setState({ email: e.target.value }); }}
-                />
-                <input
-                    className='spec-password-field'
-                    type='password'
-                    placeholder='password'
-                    onKeyPress={this.checkKeyPress.bind(this)}
-                    onChange={(e) => { this.setState({ password: e.target.value }); }}
-                />
-                <Button
-                    className='spec-submit-button'
-                    label='Sign In'
-                    onClick={this.submit.bind(this)}
-                />
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <input
+          className='spec-email-field'
+          type='email'
+          placeholder='email'
+          onChange={(e) => { this.setState({ email: e.target.value }); }}
+        />
+        <input
+          className='spec-password-field'
+          type='password'
+          placeholder='password'
+          onKeyPress={this.checkKeyPress.bind(this)}
+          onChange={(e) => { this.setState({ password: e.target.value }); }}
+        />
+        <Button
+          className='spec-submit-button'
+          label='Sign In'
+          onClick={this.submit.bind(this)}
+        />
+      </div>
+    );
+  }
 }
 
 export default connect(() => ({}), mapDispatchToProps)(SignIn);

@@ -9,26 +9,26 @@ import NavBar from 'views/partials/NavBar';
 import FlashMessage from 'services/flash/Components/FlashMessage';
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-    return bindActionCreators({ onLoad }, dispatch);
+  return bindActionCreators({ onLoad }, dispatch);
 };
 
 export class App extends Component {
-    componentDidMount() {
-        this.props.onLoad();
-    }
+  componentDidMount() {
+    this.props.onLoad();
+  }
 
-    render() {
-        return (
-            <div className='app'>
-                <NavBar />
-                <FlashMessage />
+  render() {
+    return (
+      <div className='app'>
+      <NavBar />
+      <FlashMessage />
 
-                <div className='px40 py55'>
-                    {this.props.children}
-                </div>
-            </div>
-        );
-    }
+      <div className='px40 py55'>
+      {this.props.children}
+      </div>
+      </div>
+      );
+  }
 }
 
 export default connect(() => ({}), mapDispatchToProps)(App);

@@ -6,9 +6,9 @@ import FlashMessage from './Components/FlashMessage';
 import observableError from './observableError';
 
 export {
-    actions,
-    reducer,
-    epics,
-    FlashMessage,
-    observableError,
+  actions,
+  reducer,
+  epics,
+  FlashMessage,
+  observableError,
 };

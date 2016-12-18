@@ -12,15 +12,15 @@ import ResetPassword from './Components/ResetPassword';
 import ForgotPassword from './Components/ForgotPassword';
 
 export {
-    actions,
-    reducer,
-    epics,
-    SignIn,
-    RegisterUser,
-    ActivateUser,
-    SignOut,
-    UserSettings,
-    UserPassword,
-    ResetPassword,
-    ForgotPassword,
+  actions,
+  reducer,
+  epics,
+  SignIn,
+  RegisterUser,
+  ActivateUser,
+  SignOut,
+  UserSettings,
+  UserPassword,
+  ResetPassword,
+  ForgotPassword,
 };

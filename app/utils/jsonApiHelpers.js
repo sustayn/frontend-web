@@ -11,29 +11,30 @@ const RELATIONSHIP_REGEX = /(.+)Id$/;
  * @param  {Object} attrs Attributes to serialize into the attributes key
  * @return {Object}       The JSON API document
  */
+
 export function serializeJsonApiRecord(data, attrs) {
-    const attributes = {};
-    const newData = {};
-    const relationships = {};
-    Object.keys(attrs).forEach((key) => {
-        // If it tests with the form of {something}Id then add it as a relationship
-        if(RELATIONSHIP_REGEX.test(key)) {
-            // Get result from first capturing group - the actual relationship
-            const rel = key.match(RELATIONSHIP_REGEX)[1];
-            relationships[kebabCase(rel)] = {
-                data: { type: kebabCase(pluralize(rel)), id: attrs[key] },
-            };
-        } else {
-            attributes[kebabCase(key)] = attrs[key];
-        }
-    });
+  const attributes = {};
+  const newData = {};
+  const relationships = {};
+  Object.keys(attrs).forEach((key) => {
+  // If it tests with the form of {something}Id then add it as a relationship
+    if(RELATIONSHIP_REGEX.test(key)) {
+      // Get result from first capturing group - the actual relationship
+      const rel = key.match(RELATIONSHIP_REGEX)[1];
+      relationships[kebabCase(rel)] = {
+        data: { type: kebabCase(pluralize(rel)), id: attrs[key] },
+      };
+    } else {
+      attributes[kebabCase(key)] = attrs[key];
+    }
+  });
 
-    if(data.type) newData.type = kebabCase(data.type);
-    if(data.id) newData.id = data.id;
-    if(!isEmpty(relationships)) newData.relationships = relationships;
-    newData.attributes = attributes;
+  if(data.type) newData.type = kebabCase(data.type);
+  if(data.id) newData.id = data.id;
+  if(!isEmpty(relationships)) newData.relationships = relationships;
+  newData.attributes = attributes;
 
-    return { data: newData };
+  return { data: newData };
 }
 
 /**
@@ -43,13 +44,13 @@ export function serializeJsonApiRecord(data, attrs) {
  * @return {Object}          An object of the form { [attr]: [errText] } for each err in the errors array
  */
 export function deserializeJsonApiErrors(errsArray) {
-    if(!errsArray || errsArray.length === 0) return {};
+  if(!errsArray || errsArray.length === 0) return {};
 
-    const errorsObj = {};
-    errsArray.filter((err) => err.source && err.source.pointer && err.detail).forEach((err) => {
-        const key = camelCase(err.source.pointer.replace('/data/attributes/', ''));
-        errorsObj[key] = err.detail;
-    });
+  const errorsObj = {};
+  errsArray.filter((err) => err.source && err.source.pointer && err.detail).forEach((err) => {
+    const key = camelCase(err.source.pointer.replace('/data/attributes/', ''));
+    errorsObj[key] = err.detail;
+  });
 
-    return errorsObj;
+  return errorsObj;
 }

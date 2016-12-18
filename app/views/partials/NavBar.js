@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Link from 'react-router/lib/Link';
 
 import {
-    UserIsAuthenticated,
-    UserIsNotAuthenticated,
+  UserIsAuthenticated,
+  UserIsNotAuthenticated,
 } from 'services/Authorization';
 import { SignOut } from 'services/authentication';
 
@@ -15,27 +15,27 @@ const SignInLink = UserIsNotAuthenticated(<Link to='/auth/signin' className='nav
 const SignOutComponent = UserIsAuthenticated(<SignOut />, { FailureComponent: null });
 
 const NavBar = () => {
-    return (
-        <Header
-            className='navbar'
-            fixed
-            justify='between'
-            colorIndex='brand'
-        >
-            <Box pad={({ horizontal: 'small' })}>
-                Aveera
-            </Box>
+  return (
+    <Header
+      className='navbar'
+      fixed
+      justify='between'
+      colorIndex='brand'
+    >
+      <Box pad={({ horizontal: 'small' })}>
+        Aveera
+      </Box>
 
-            MAGIC
-            TOOLBAR
-            !!!
+      MAGIC
+      TOOLBAR
+      !!!
 
-            <Menu direction='row' inline responsive={false} label='Routes'>
-                <SignInLink className='lh-navbar px12 pointer' />
-                <SignOutComponent className='lh-navbar px12 pointer' />
-            </Menu>
-        </Header>
-    );
+      <Menu direction='row' inline responsive={false} label='Routes'>
+        <SignInLink className='lh-navbar px12 pointer' />
+        <SignOutComponent className='lh-navbar px12 pointer' />
+      </Menu>
+    </Header>
+  );
 };
 
 export default NavBar;

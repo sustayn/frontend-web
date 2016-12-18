@@ -2,26 +2,26 @@ import db from './Database';
 
 // Create the current user
 const currentUserAttrs = Object.assign({}, {
-    firstName:         'Jake',
-    lastName:          'Dluhy',
-    email:             'jake@example.com',
-    encryptedPassword: 'password',
-    careTeamId:        1,
+  firstName:         'Jake',
+  lastName:          'Dluhy',
+  email:             'jake@example.com',
+  encryptedPassword: 'password',
+  careTeamId:        1,
 }, getDataFromStorage());
 
 // Create the registered, non activated user
 if(window.localStorage.getItem('mirage.confirmationCode')) {
-    db.create('user', {
-        email:             'andrew@example.com',
-        _confirmationCode: window.localStorage.getItem('mirage.confirmationCode'),
-    });
+  db.create('user', {
+    email:             'andrew@example.com',
+    _confirmationCode: window.localStorage.getItem('mirage.confirmationCode'),
+  });
 }
 
 if(window.localStorage.getItem('mirage.resetPasswordToken')) {
-    db.create('user', {
-        email:               'andrewf@example.com',
-        _resetPasswordToken: window.localStorage.getItem('mirage.resetPasswordToken'),
-    });
+  db.create('user', {
+    email:               'andrewf@example.com',
+    _resetPasswordToken: window.localStorage.getItem('mirage.resetPasswordToken'),
+  });
 }
 
 db.create('user', currentUserAttrs);
@@ -35,18 +35,18 @@ export default db;
  * to what is stored
  */
 function getDataFromStorage() {
-    let storage;
-    if(window.sessionStorage.getItem('access-token')) {
-        storage = window.sessionStorage;
-    } else if(window.localStorage.getItem('access-token')) {
-        storage = window.localStorage;
-    } else {
-        return {};
-    }
+  let storage;
+  if(window.sessionStorage.getItem('access-token')) {
+    storage = window.sessionStorage;
+  } else if(window.localStorage.getItem('access-token')) {
+    storage = window.localStorage;
+  } else {
+    return {};
+  }
 
-    return {
-        _accessToken: storage.getItem('access-token'),
-        _expiry:      storage.getItem('expiry'),
-        _client:      storage.getItem('client'),
-    };
+  return {
+    _accessToken: storage.getItem('access-token'),
+    _expiry:      storage.getItem('expiry'),
+    _client:      storage.getItem('client'),
+  };
 }
