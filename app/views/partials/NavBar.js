@@ -26,10 +26,6 @@ const NavBar = () => {
         Aveera
       </Box>
 
-      MAGIC
-      TOOLBAR
-      !!!
-
       <Menu direction='row' inline responsive={false} label='Routes'>
         <SignInLink className='lh-navbar px12 pointer' />
         <SignOutComponent className='lh-navbar px12 pointer' />

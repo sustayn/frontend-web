@@ -1,6 +1,6 @@
 import React from 'react';
 import browserHistory from 'react-router/lib/browserHistory';
-import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
+import { syncHistoryWithStore, routerMiddleware, push } from 'react-router-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { combineEpics, createEpicMiddleware } from 'redux-observable';
 
