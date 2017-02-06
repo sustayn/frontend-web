@@ -26,6 +26,7 @@ if(window.localStorage.getItem('mirage.resetPasswordToken')) {
 
 db.create('user', currentUserAttrs);
 const users = db.createList('user', 5);
+db.create('node');
 
 export default db;
 

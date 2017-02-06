@@ -31,6 +31,7 @@ module.exports = function(env) {
       app:             path.resolve(__dirname, '../app'),
       actions:         path.resolve(__dirname, '../app/actions'),
       assets:          path.resolve(__dirname, '../app/assets'),
+      channels:        path.resolve(__dirname, '../app/channels'),
       containers:      path.resolve(__dirname, '../app/containers'),
       entry:           path.resolve(__dirname, '../app/index.js'),
       libs:            path.resolve(__dirname, '../app/libs'),

@@ -29,67 +29,16 @@ const useDevEnv = (process.env.NODE_ENV === 'development');
 export const DevEnv =
   useDevEnv ? {
     startingRoute:      '/',
-    autoLogin:          true,
-    acceptInitialState: true, /* Note: autoLogin currently requires acceptInitialState to be true */
+    autoLogin:          false,
+    acceptInitialState: false, /* Note: autoLogin currently requires acceptInitialState to be true */
   } : {};
-
-
-/**
- * Config for RxAjax Service
- */
-
-// BASE_URL should be provided as part of the build process
-const baseUrl = process.env.BASE_URL || '';
-
-// Essentially, we want to get the subdomain. Unfortunately, there is no guaranteed way to get the
-// subdomain. This is a pretty decent way, assuming that we don't have a multitiered subdomain (some.thing.aveera.com)
-// and we operate on .com, not .co.uk or some BS like that
-const hostnameParts = window.location.hostname.split('.');
-const subdomain = getSubdomain();
-export const RxAjaxConfig = {
-  headers: {
-    'Content-Type': 'application/json',
-    'token-type':   'Bearer',
-  },
-  baseUrl: `${baseUrl}/v1${subdomain}`,
-  afterRequest(response) {
-    const headersObj = storeAndGetResponseHeaders(response.xhr);
-    this.headers = merge({}, this.defaultHeaders, headersObj);
-
-    return response;
-  },
-};
-
-function storeAndGetResponseHeaders(xhr) {
-  const keys = ['access-token', 'client', 'expiry', 'uid', 'token-type'];
-  const headersObj = {};
-
-  keys.filter((key) => xhr.getResponseHeader(key))
-  .forEach((key) => {
-    headersObj[key] = xhr.getResponseHeader(key);
-    AuthConfig.storage.setItem(key, xhr.getResponseHeader(key));
-  });
-
-  return headersObj;
-}
-
-// Pass in the domain name for the server as part of the build process, and replace that out to get the subdomain
-// Return /metamason by default to avoid errors
-function getSubdomain() {
-  if(process.env.DOMAIN_NAME) {
-    const subdomain = window.location.hostname.replace(process.env.DOMAIN_NAME, '').replace(/\.$/, '');
-    if(subdomain.length > 0) return `/${subdomain}`;
-  }
-  return '/metamason';
-}
-
 
 /**
  * Config for Auth Service
  */
 
 export const AuthConfig = {
-  storage:       window.sessionStorage,
+  storage:       window.localStorage,
   registerRoute: '/auth/register',
   forgotRoute:   '/auth/forgot-password',
   resetRoute:    '/auth/password-reset',
@@ -104,6 +53,50 @@ export const AuthConfig = {
   autoLogin: useDevEnv,
 };
 
+/**
+ * Config for RxAjax Service
+ */
+
+// BASE_URL should be provided as part of the build process
+const baseUrl = process.env.BASE_URL || '';
+const headerKeys = ['access-token', 'client', 'expiry', 'uid', 'token-type'];
+
+export const RxAjaxConfig = {
+  headers: getHeaders(),
+  baseUrl: `${baseUrl}/api/v1`,
+  afterRequest(response) {
+    const headersObj = storeAndGetResponseHeaders(response.xhr);
+    this.headers = merge({}, this.headers, headersObj);
+
+    return response;
+  },
+};
+
+function storeAndGetResponseHeaders(xhr) {
+  const headersObj = {};
+
+  headerKeys.filter((key) => xhr.getResponseHeader(key))
+  .forEach((key) => {
+    headersObj[key] = xhr.getResponseHeader(key);
+    AuthConfig.storage.setItem(key, xhr.getResponseHeader(key));
+  });
+
+  return headersObj;
+}
+
+function getHeaders() {
+  const storedHeaders = {};
+
+  headerKeys.filter((key) => AuthConfig.storage.getItem(key))
+  .forEach((key) => {
+    storedHeaders[key] = AuthConfig.storage.getItem(key);
+  });
+
+  return merge({}, {
+    'Content-Type': 'application/json',
+    'token-type':   'Bearer',
+  }, storedHeaders);
+}
 
 /**
  * Config for Authorization Service

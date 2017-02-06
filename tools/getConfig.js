@@ -36,10 +36,7 @@ module.exports = function(event, c) {
         parts.build(entry, c),
         loaders(['javascript', 'url', 'styles', 'json'], c),
         utils.chain(['refDll', 'exposeReact'], c),
-        utils.defineVariables({
-          'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-          'process.env.BASE_URL': JSON.stringify(process.env.BASE_URL),
-        }),
+        utils.defineVariables(process.env),
         {
           devtool: /*c.SOURCEMAP ||*/ 'eval',
           target:  'web',
@@ -63,11 +60,7 @@ module.exports = function(event, c) {
         parts.build(c.PATHS.entry, c),
         process.env.NODE_ENV === 'production' ? parts.extractChunks(vendorFiles) : {},
         loaders(['javascript', 'url', 'styles', 'json'], c),
-        utils.defineVariables({
-          'process.env.NODE_ENV':    JSON.stringify(process.env.NODE_ENV),
-          'process.env.BASE_URL':    JSON.stringify(process.env.BASE_URL),
-          'process.env.DOMAIN_NAME': JSON.stringify(process.env.DOMAIN_NAME),
-        }),
+        utils.defineVariables(process.env),
         utils.chain(utilsToUse, c),
         {
           target: 'web'

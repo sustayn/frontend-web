@@ -1,3 +1,0 @@
--r jsdom-global/register
---reporter dot
---recursive

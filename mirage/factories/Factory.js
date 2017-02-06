@@ -38,7 +38,7 @@ class Factory {
 
           relationshipsObject.belongsTo.forEach((belongsTo) => {
             newObj[`get${capitalize(belongsTo)}`] = function() {
-              return db[pluralize(belongsTo)].find(this[`${belongsTo}Id`])[0];
+              return db[pluralize(belongsTo)].find(this[`${belongsTo}Id`]);
             };
           });
         }
@@ -62,7 +62,7 @@ class Factory {
             newObj[`get${capitalize(hasOne)}`] = function() {
               const queryConditions = {};
               queryConditions[`${newObj._meta.type}Id`] = this.id;
-              return db[hasOne].where(queryConditions)[0];
+              return db[pluralize(hasOne)].where(queryConditions)[0];
             };
           });
         }

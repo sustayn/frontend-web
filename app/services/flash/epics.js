@@ -28,8 +28,8 @@ export const flashWarningEpic = (action$) => {
 };
 
 export default [
-flashPushEpic,
-flashErrorEpic,
-flashSuccessEpic,
-flashWarningEpic,
+  flashPushEpic,
+  flashErrorEpic,
+  flashSuccessEpic,
+  flashWarningEpic,
 ];

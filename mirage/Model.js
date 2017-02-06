@@ -20,9 +20,11 @@ class Model {
    * @return {Array}                                   The array of corresponding objects
    */
   find(ids) {
-    if(!Array.isArray(ids)) ids = Array.prototype.slice.call(arguments); // Turn arguments into an array
-
-    return this.objects.filter((obj) => ids.includes(obj.id));
+    if(Array.isArray(ids)) {
+      return this.objects.filter((obj) => ids.includes(obj.id));
+    } else {
+      return this.objects.filter((obj) => obj.id === Number(ids))[0];
+    }
   }
   /**
    * Find all objects corresponding to the conditions provided

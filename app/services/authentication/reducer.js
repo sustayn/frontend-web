@@ -16,7 +16,7 @@ export function reducer(state = init(), action) {
       AuthConfig.storage.setItem('currentUser', JSON.stringify(currentUser2));
       return { ...state, isAuthenticated: true, currentUser: currentUser2 };
     case a.SIGN_OUT_USER:
-      if (AuthConfig.autoLogin) {
+      if(AuthConfig.autoLogin) {
         return { ...state };
       } else {
         removeStoredHeaders();

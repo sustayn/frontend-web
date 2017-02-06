@@ -1,6 +1,6 @@
-import chai from 'chai';
-import chaiImmutable from 'chai-immutable';
-import { jsdom, changeURL, createVirtualConsole } from 'jsdom';
+const chai = require('chai');
+const chaiImmutable = require('chai-immutable');
+const jsdom = require('jsdom').jsdom;
 
 // Set Chai Immutable
 chai.use(chaiImmutable);

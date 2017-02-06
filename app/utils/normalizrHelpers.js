@@ -147,7 +147,7 @@ export const genericPayload = (res) => {
       {
         schemaAttribute: (item) => {
           return camelCase(item.type);
-        }
+        },
       }
     )
   );
@@ -166,7 +166,7 @@ Observable.prototype.mapDataToPayload = function mapDataToPayload() {
 Observable.prototype.mapDataToAction = function mapDataToAction(type) {
   return Observable.create((observer) => {
     this.subscribe({
-      next:     (data) => { return observer.next({ type, payload: genericPayload(data) }) },
+      next:     (data) => observer.next({ type, payload: genericPayload(data) }),
       error:    (err) => observer.error(err),
       complete: () => observer.complete(),
     });

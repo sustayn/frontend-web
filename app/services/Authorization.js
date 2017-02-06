@@ -23,7 +23,7 @@ export function UserIsAuthenticated(component, options = {}) {
 export function UserIsNotAuthenticated(component, options = {}) {
   const wrapper = UserAuthWrapper(merge({}, common, {
     predicate:           (auth) => !auth.isAuthenticated,
-    failureRedirectPath: '/dashboard',
+    failureRedirectPath: '/',
     wrapperDisplayName:  'UserIsNotAuthenticated',
     allowRedirectBack:   false,
   }, options));

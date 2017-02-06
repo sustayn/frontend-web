@@ -2,7 +2,10 @@ import React, { PropTypes, Component } from 'react';
 import { Provider } from 'react-redux';
 import Router from 'react-router/lib/Router';
 
-import mirage from 'mirage/index';
+if(!process.env.BASE_URL) {
+  require('mirage/index');
+}
+
 import { Env, DevEnv } from 'app/config';
 import { configureStore } from 'app/store';
 import { initialState } from 'reducers/initialState';

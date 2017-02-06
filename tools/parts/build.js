@@ -38,6 +38,7 @@ module.exports = function(entry, config) {
     resolve: {
       alias: {
         app:        config.PATHS.app,
+        channels:   config.PATHS.channels,
         containers: config.PATHS.containers,
         test:       config.PATHS.test,
         mirage:     config.PATHS.mirage,

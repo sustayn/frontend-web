@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import Route from 'react-router/lib/Route';
+import Redirect from 'react-router/lib/Redirect';
 import IndexRoute from 'react-router/lib/IndexRoute';
 
 import App from 'containers/App';
 
+import NodesShow from 'views/nodes/NodesShow';
 import NotFound from 'views/NotFound';
 
 import { Env, AuthConfig } from 'app/config';
@@ -32,7 +34,10 @@ const routes = (
       <Route path={AuthConfig.activateRoute} component={Views.AuthActivate} />
     </Route>
 
-    <Route path='*' component={NotFound} />
+    <Route path='nodes/:id' component={NodesShow} />
+
+    <Route path='/not-found' component={NotFound} />
+    <Redirect from='*' to='/not-found' />
   </Route>
 );
 

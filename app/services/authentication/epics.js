@@ -155,16 +155,16 @@ export const forgotPasswordEpic = (action$) => {
 };
 
 export default [
-onLoadEpic,
-validateTokenEpic,
-signinEpic,
-registerEpic,
-activateEpic,
-signoutEpic,
-updateUserEpic,
-updatePasswordEpic,
-resetPasswordEpic,
-forgotPasswordEpic,
+  onLoadEpic,
+  validateTokenEpic,
+  signinEpic,
+  registerEpic,
+  activateEpic,
+  signoutEpic,
+  updateUserEpic,
+  updatePasswordEpic,
+  resetPasswordEpic,
+  forgotPasswordEpic,
 ];
 
 function initAuthentication() {

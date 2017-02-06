@@ -242,11 +242,13 @@ class Server {
     let includedObjects = [];
 
     includedArray.forEach((rel) => {
-      if(obj._meta.relationships.includes(rel)) {
-        const relObj = obj[`get${capitalize(rel)}`]();
+      const cameledRel = camelCase(rel);
+
+      if(obj._meta.relationships && obj._meta.relationships.includes(cameledRel)) {
+        const relObj = obj[`get${capitalize(cameledRel)}`]();
         includedObjects = Array.isArray(relObj) ? includedObjects.concat(relObj) : includedObjects.concat([relObj]);
       } else {
-        console.warn(`Object with name ${obj._meta.type} does not have a relation ${rel}`);
+        console.warn(`Object with name ${obj._meta.type} does not have a relation ${cameledRel}`);
       }
     });
 
@@ -276,5 +278,5 @@ function getUniqIncluded(arr) {
 }
 
 function getNamespace(definedNS) {
-  return definedNS.includes('http') ? definedNS : `/v1/metamason${definedNS}`;
+  return definedNS.includes('http') ? definedNS : `/api/v1${definedNS}`;
 }
